@@ -4,9 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Para Mamá, con todo mi amor ❤️</title>
+
+  <!-- Open Graph / WhatsApp -->
+  <meta property="og:title" content="Para Mamá, con todo mi amor ❤️">
+  <meta property="og:description" content="Un regalo especial para el cumpleaños de la persona más importante.">
+  <meta property="og:image" content="fotos/og-image.jpg">
+  <meta property="og:type" content="website">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -33,7 +40,36 @@
       color: var(--text-primary);
       font-family: 'Lato', sans-serif;
       overflow-x: hidden;
+      cursor: none; /* Custom cursor */
     }
+
+    /* ── NOISE OVERLAY ── */
+    .noise-overlay {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* ── CUSTOM CURSOR ── */
+    .cursor-heart {
+      position: fixed;
+      pointer-events: none;
+      z-index: 10000;
+      width: 24px;
+      height: 24px;
+      margin-left: -12px;
+      margin-top: -12px;
+      transition: transform 0.15s ease, fill 0.15s ease;
+      fill: var(--rose-light);
+      filter: drop-shadow(0 4px 8px rgba(201,24,74,0.3));
+    }
+    body:active .cursor-heart { transform: scale(0.7); }
+    .cursor-hover .cursor-heart { transform: scale(1.3); fill: var(--pink-light); }
 
     /* ── CANVAS ── */
     #heartCanvas {
@@ -57,8 +93,10 @@
       text-align: center;
       padding: 3rem 2rem 8rem;
       background:
-        radial-gradient(ellipse at 50% 60%, rgba(201,24,74,0.18) 0%, transparent 65%),
-        radial-gradient(ellipse at 20% 20%, rgba(255,77,109,0.08) 0%, transparent 50%);
+        radial-gradient(at 27% 37%, hsla(340, 98%, 61%, 0.12) 0px, transparent 50%),
+        radial-gradient(at 97% 21%, hsla(350, 98%, 72%, 0.08) 0px, transparent 50%),
+        radial-gradient(at 52% 99%, hsla(330, 98%, 61%, 0.1) 0px, transparent 50%),
+        radial-gradient(at 10% 29%, hsla(320, 96%, 67%, 0.05) 0px, transparent 50%);
     }
 
     .hero-emoji {
@@ -442,7 +480,11 @@
 </head>
 <body>
 
-<!-- Fondo animado de corazones -->
+<!-- Fondos y Efectos -->
+<div class="noise-overlay"></div>
+<svg class="cursor-heart" id="cursorHeart" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+</svg>
 <canvas id="heartCanvas"></canvas>
 
 <!-- ════════════════════════════════════════
@@ -595,33 +637,26 @@
   <div class="collage-grid" id="collageGrid">
     <!-- Slot grande (featured) -->
     <div class="slot slot-featured reveal">
-      <span class="slot-icon">📷</span>
-      <span class="slot-label">foto principal</span>
+      <img src="fotos/foto1.png" alt="Para Mamá">
     </div>
     <!-- Slots regulares -->
     <div class="slot reveal reveal-delay-1">
-      <span class="slot-icon">📷</span>
-      <span class="slot-label">foto 2</span>
+      <img src="fotos/foto2.png" alt="Momento especial">
     </div>
     <div class="slot reveal reveal-delay-2">
-      <span class="slot-icon">📷</span>
-      <span class="slot-label">foto 3</span>
+      <img src="fotos/foto3.png" alt="Momento especial">
     </div>
     <div class="slot reveal">
-      <span class="slot-icon">📷</span>
-      <span class="slot-label">foto 4</span>
+      <img src="fotos/foto4.png" alt="Momento especial">
     </div>
     <div class="slot reveal reveal-delay-1">
-      <span class="slot-icon">📷</span>
-      <span class="slot-label">foto 5</span>
+      <img src="fotos/foto5.png" alt="Momento especial">
     </div>
     <div class="slot reveal reveal-delay-2">
-      <span class="slot-icon">📷</span>
-      <span class="slot-label">foto 6</span>
+      <img src="fotos/foto2.png" alt="Momento especial"> <!-- Reused since quota exhausted -->
     </div>
     <div class="slot reveal">
-      <span class="slot-icon">📷</span>
-      <span class="slot-label">foto 7</span>
+      <img src="fotos/foto3.png" alt="Momento especial"> <!-- Reused since quota exhausted -->
     </div>
   </div>
 </section>
@@ -751,6 +786,40 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ── CUSTOM CURSOR SCRIPT ──────────────────────────────────────────────────
+  const heartCursor = document.getElementById('cursorHeart');
+
+  window.addEventListener('mousemove', (e) => {
+    const { clientX: x, clientY: y } = e;
+    heartCursor.style.left = `${x}px`;
+    heartCursor.style.top = `${y}px`;
+  });
+
+  // Hover detection
+  const interactiveElements = 'a, button, .card, .slot, .hero-emoji';
+  document.querySelectorAll(interactiveElements).forEach(el => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+  });
+
+  // Hide cursor on mobile
+  if (window.matchMedia("(max-width: 900px)").matches) {
+    document.body.style.cursor = 'auto';
+    heartCursor.style.display = 'none';
+  }
+</script>
+
+<!-- MÚSICA DE FONDO -->
+<audio id="bgMusic" autoplay loop style="display:none">
+  <source src="fotos/Best Old School Reggae Mix_ Bob Marley, Barrington Levy, Dennis Brown _ Tina's Mixtape [0cfhfj_n_Lg].mp3" type="audio/mpeg">
+</audio>
+<script>
+  // Autoplay workaround (la música empieza al primer click por si el navegador bloquea el autoplay)
+  document.addEventListener('click', () => {
+    const audio = document.getElementById('bgMusic');
+    if (audio.paused) audio.play();
+  }, { once: true });
 </script>
 
 </body>

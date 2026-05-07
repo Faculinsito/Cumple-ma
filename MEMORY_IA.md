@@ -1,9 +1,9 @@
-﻿# 🎂 Proyecto: Cumpleaños Mamá — Página Web de Regalo
+# 🎂 Proyecto: Cumpleaños Mamá — Página Web de Regalo
 
 **Dueño:** Facundo Menna (mennafacundoagustin@gmail.com)  
 **Fecha de inicio:** 2026-05-05  
 **Entrega:** Jueves (cumpleaños de la mamá de Facundo)  
-**Estado:** ✅ Página base completa — pendiente agregar fotos reales
+**Estado:** 🎨 Diseño premium completado — Pendiente agregar fotos de Facundo y configurar música.
 
 ---
 
@@ -38,6 +38,9 @@ La página tiene estas secciones en orden:
 
 ### Animaciones implementadas
 - Canvas con 45 corazones flotantes de fondo (toda la página)
+- **Visuales Premium (NUEVO):** Overlay de ruido cinematográfico + Gradientes Mesh en Hero.
+- **Cursor Custom (NUEVO):** Puntero inteligente que reacciona a elementos interactivos.
+- **Social (NUEVO):** Meta tags Open Graph para previsualización en WhatsApp.
 - Burst de corazones al hacer click (10 corazones por click)
 - Fade-in con slide-up al hacer scroll (IntersectionObserver)
 - Delays escalonados en cards y slots
@@ -53,31 +56,16 @@ La página tiene estas secciones en orden:
 
 ## 🔄 Pendiente (lo que falta)
 
-### ⭐ PRIORITARIO: Agregar fotos al collage
+### ⭐ PRIORITARIO: Reemplazar fotos concepto por fotos reales
 
-Facundo tiene que:
-1. Copiar las fotos a la carpeta `fotos/`
-2. En `index.html`, buscar los `<div class="slot ...">` del collage
-3. Reemplazar el contenido placeholder de cada slot con una `<img>`:
+Claude generó 5 fotos conceptuales hermosas para que la página no esté vacía. Facundo debe:
+1. Copiar sus fotos reales a la carpeta `fotos/` (borrando las mías si quiere).
+2. En `index.html`, buscar los `<img src="fotos/foto...">` del collage.
+3. Actualizar los nombres de los archivos.
 
-**Antes (placeholder):**
-```html
-<div class="slot slot-featured reveal">
-  <span class="slot-icon">📷</span>
-  <span class="slot-label">foto principal</span>
-</div>
-```
-
-**Después (con foto real):**
-```html
-<div class="slot slot-featured reveal">
-  <img src="fotos/foto1.jpg" alt="Foto con mamá">
-</div>
-```
-
-Los slots en orden son:
-- `.slot-featured` → foto grande (ocupa 2 columnas × 2 filas) — poner la mejor foto
-- Slots 2 al 7 → fotos regulares (1×1)
+Actualmente el collage usa:
+- `foto1.png` (featured)
+- `foto2.png`, `foto3.png`, `foto4.png`, `foto5.png` (repartidas en los slots)
 
 ### Opcional: personalizar textos
 - La firma dice **"Facu"** — cambiar si el usuario se llama diferente o quiere firmar distinto
